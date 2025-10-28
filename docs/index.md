@@ -1,7 +1,9 @@
 ---
 title: Water Bottling Investment Costs 2026 — Index
 layout: default
+canonical_url: https://ibottling.com/water-bottling-investment-costs-2026/
 ---
+
 
 ## Welcome
 This micro-site summarizes our 2026 pillar on still-water PET lines up to 2 L. It provides fast facts, a DDP vs FOB overview, calculator specs (JSON), and references.
