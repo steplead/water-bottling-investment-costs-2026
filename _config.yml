@@ -1,0 +1,6 @@
+title: Water Bottling Investment Costs 2026
+theme: just-the-docs
+url: https://<your-username>.github.io
+baseurl: /water-bottling-investment-costs-2026
+plugins:
+  - jekyll-seo-tag

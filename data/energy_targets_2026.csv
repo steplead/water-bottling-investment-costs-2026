@@ -1,0 +1,4 @@
+Category,Metric,Min,Max,Notes
+Starter (≤8k BPH),Electricity kWh/1k,10.0,14.0,ECO ovens recommended
+Growth (8k–24k BPH),Electricity kWh/1k,8.0,12.0,With air-recovery
+All,Process water L/L,1.2,1.6,Good hygiene zoning

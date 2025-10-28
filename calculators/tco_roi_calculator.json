@@ -1,0 +1,89 @@
+{
+  "id": "tco_roi_2026",
+  "name": "USD per 1,000 Bottles & Simple Payback (2026)",
+  "version": "1.0",
+  "description": "Framework-agnostic specification for computing cost per 1,000 bottles and simple payback.",
+  "inputs": [
+    {
+      "name": "bph",
+      "label": "Line speed",
+      "unit": "BPH",
+      "type": "number",
+      "min": 3000,
+      "max": 30000,
+      "step": 1000
+    },
+    {
+      "name": "oee",
+      "label": "OEE",
+      "unit": "%",
+      "type": "number",
+      "min": 50,
+      "max": 95,
+      "step": 1
+    },
+    {
+      "name": "energy",
+      "label": "Electricity",
+      "unit": "kWh/1k",
+      "type": "number",
+      "min": 6,
+      "max": 20,
+      "step": 0.1
+    },
+    {
+      "name": "air",
+      "label": "Air",
+      "unit": "Nm\u00b3/1k",
+      "type": "number",
+      "min": 80,
+      "max": 200,
+      "step": 1
+    },
+    {
+      "name": "elecCost",
+      "label": "Power cost",
+      "unit": "USD/kWh",
+      "type": "number",
+      "min": 0.05,
+      "max": 0.4,
+      "step": 0.01
+    },
+    {
+      "name": "capex",
+      "label": "CAPEX",
+      "unit": "USD",
+      "type": "number",
+      "min": 400000,
+      "max": 5000000,
+      "step": 1000
+    },
+    {
+      "name": "gm",
+      "label": "Gross margin/1k",
+      "unit": "USD",
+      "type": "number",
+      "min": 10,
+      "max": 200,
+      "step": 1
+    }
+  ],
+  "outputs": [
+    {
+      "name": "usd1k",
+      "label": "Cost per 1,000 bottles",
+      "unit": "USD",
+      "precision": 1,
+      "explain": "Utilities + allocated CAPEX/5y + fixed/shift"
+    },
+    {
+      "name": "payback",
+      "label": "Simple payback",
+      "unit": "months",
+      "precision": 1,
+      "explain": "CAPEX / (Throughput \u00d7 margin \u2212 cost)"
+    }
+  ],
+  "logic": "Throughput_per_month = BPH * OEE% * 24 * 30 / 100; UtilitiesUSD_per_1k = energy * elecCost; USD1k \u2248 UtilitiesUSD_per_1k + overheads; Payback_months = CAPEX / (Throughput_per_month/1000 * gm - USD1k).",
+  "notes": "Adjust overheads for labor, maintenance, resin deltas (26/22 vs 1881), and packaging format."
+}

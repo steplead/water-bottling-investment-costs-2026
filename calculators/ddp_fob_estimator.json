@@ -1,0 +1,78 @@
+{
+  "id": "ddp_fob_estimator_2026",
+  "name": "DDP vs FOB Comparator (USD/1k, 2026)",
+  "version": "1.0",
+  "description": "Estimate landed USD per 1,000 bottles under DDP vs FOB assumptions.",
+  "inputs": [
+    {
+      "name": "feu",
+      "label": "Ocean freight",
+      "unit": "USD/FEU",
+      "type": "number",
+      "min": 800,
+      "max": 8000,
+      "step": 50
+    },
+    {
+      "name": "duty",
+      "label": "Import duty",
+      "unit": "%",
+      "type": "number",
+      "min": 0,
+      "max": 30,
+      "step": 0.1
+    },
+    {
+      "name": "inland",
+      "label": "Destination inland",
+      "unit": "USD",
+      "type": "number",
+      "min": 0,
+      "max": 8000,
+      "step": 50
+    },
+    {
+      "name": "units",
+      "label": "Bottles/FEU (equivalent)",
+      "unit": "units",
+      "type": "number",
+      "min": 100000,
+      "max": 1200000,
+      "step": 10000
+    },
+    {
+      "name": "cif1k",
+      "label": "CIF per 1k bottles (if available)",
+      "unit": "USD/1k",
+      "type": "number",
+      "min": 0,
+      "max": 1000,
+      "step": 1
+    }
+  ],
+  "outputs": [
+    {
+      "name": "fob1k",
+      "label": "FOB cost (logistics only)",
+      "unit": "USD/1k",
+      "precision": 1,
+      "explain": "Often treated as 0 when focusing on logistics deltas"
+    },
+    {
+      "name": "ddp1k",
+      "label": "DDP landed cost",
+      "unit": "USD/1k",
+      "precision": 1,
+      "explain": "FOB + freight + duty + inland"
+    },
+    {
+      "name": "breakeven",
+      "label": "DDP\u2194FOB break-even freight",
+      "unit": "USD/FEU",
+      "precision": 0,
+      "explain": "Freight at which DDP equals FOB under given duty/inland"
+    }
+  ],
+  "logic": "DDP1k = (feu/units*1000) + (duty% * cif1k) + (inland/units*1000); Breakeven \u2248 function(duty, inland, cif1k).",
+  "notes": "Refine with corridor-specific surcharges, demurrage/detention risks, and insurance."
+}
