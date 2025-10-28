@@ -9,4 +9,3 @@ plugins:
   - jekyll-remote-theme
 
 # 告诉 Jekyll 我们的布局文件在 docs/_layouts
-layouts_dir: docs/_layouts
