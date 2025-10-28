@@ -1,6 +1,12 @@
 title: Water Bottling Investment Costs 2026
-theme: just-the-docs
-url: https://<your-username>.github.io
+url: https://steplead.github.io
 baseurl: /water-bottling-investment-costs-2026
+
+# 使用远程主题（GitHub Pages 支持）
+remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-seo-tag
+  - jekyll-remote-theme
+
+# 告诉 Jekyll 我们的布局文件在 docs/_layouts
+layouts_dir: docs/_layouts
